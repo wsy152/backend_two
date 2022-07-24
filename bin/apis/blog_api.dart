@@ -22,12 +22,12 @@ class BlogApi {
     router.get('/blog/noticias', (Request req){
       var noticias = _service.findAll();
 
-     // List<Map> noticiasMap = noticias.map<Map<dynamic,dynamic>>((e) => e.toJson()).toList();
+      List<Map> noticiasMap = noticias.map((e) => e.toJson()).toList();
       
       
-      //_service.findAll();
 
-      return Response.ok(noticias);
+
+      return Response.ok(jsonEncode(noticiasMap),headers: {'content-type':"application/json"});
 
     });
 

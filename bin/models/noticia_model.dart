@@ -24,7 +24,7 @@ class NoticiaModel {
     dtAtualizacao: DateTime.fromMicrosecondsSinceEpoch(json['dtAtualizacao']),
     );
 
-    Future<Map> toJson() async {
+    Map toJson(){
       return {
         "id": id,
         "titulo":titulo,
