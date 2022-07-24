@@ -1,24 +1,47 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// ignore: file_names
 class NoticiaModel {
-  final int id;
-  final String titilo;
-  final String descricao;
-  final String imagem;
-  final DateTime dtPlublicacao;
-  final DateTime? dtAtulizacao;
+   int? id;
+   String? titulo;
+   String? descricao;
+   String? imagem;
+   DateTime? dtPublicacao;
+   DateTime? dtAtualizacao;
 
-  NoticiaModel(
+  NoticiaModel({
     this.id,
-    this.titilo,
+    this.titulo,
     this.descricao,
     this.imagem,
-    this.dtPlublicacao,
-    this.dtAtulizacao,
-  );
+    this.dtPublicacao,
+    this.dtAtualizacao,
+    });
+
+  factory NoticiaModel.fromJson(Map<String, dynamic> json) => NoticiaModel(
+    id: json['id'],    
+    titulo:json['titulo'],
+    descricao:json['descricao'],
+    imagem:json['imagem'],
+    dtPublicacao: DateTime.fromMicrosecondsSinceEpoch(json['dtPublicacao']),
+    dtAtualizacao: DateTime.fromMicrosecondsSinceEpoch(json['dtAtualizacao']),
+    );
+
+    Future<Map> toJson() async {
+      return {
+        "id": id,
+        "titulo":titulo,
+        "descricao":descricao,
+        "imagem": imagem,
+      };
+     }
+
+
+
+     
+
+
 
   @override
   String toString() {
-    return 'NoticiaModel(id: $id, titilo: $titilo, descricao: $descricao, imagem: $imagem, dtPlublicacao: $dtPlublicacao, dtAtulizacao: $dtAtulizacao)';
+  return 'NoticiaModel(id: $id, titilo: $titulo, descricao: $descricao, imagem: $imagem, dtPlublicacao: $dtPublicacao, dtAtulizacao: $dtAtualizacao)';
   }
 }
+
