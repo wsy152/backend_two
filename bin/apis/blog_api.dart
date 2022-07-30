@@ -27,7 +27,7 @@ class BlogApi {
       
 
 
-      return Response.ok(jsonEncode(noticiasMap),headers: {'content-type':"application/json"});
+      return Response.ok(jsonEncode(noticiasMap));
 
     });
 
