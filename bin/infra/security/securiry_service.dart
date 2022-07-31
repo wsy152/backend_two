@@ -1,4 +1,14 @@
+import 'package:shelf/shelf.dart';
+
 abstract class SecurityService<T> {
+
   Future<String> genarateJWT(String userID);
-   T? validateJTW(String token);
+   
+  Future<T?> validateJTW(String token);
+
+  Middleware get verifyJwt;
+
+  Middleware get authorization;
+
+  
 }

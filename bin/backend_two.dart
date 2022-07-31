@@ -10,9 +10,16 @@ import 'utils/custom_env.dart';
 
 void main() async {
   CustomEnv.fomFile('.env-dev');
-  var cascadeHandler = Cascade().add(LoginApi(SecurityServiceImp()).handler).add(BlogApi(NoticiaService()).handler).handler;
+  var cascadeHandler = Cascade()
+      .add(LoginApi(SecurityServiceImp()).handler)
+      .add(BlogApi(NoticiaService()).handler)
+      .handler;
 
-  var handler = Pipeline().addMiddleware(logRequests()).addMiddleware(MiddlewareInterception().middlerware).addHandler(cascadeHandler);
+  var handler = Pipeline()
+      .addMiddleware(logRequests())
+      .addMiddleware(MiddlewareInterception().middlerware)
+      .addMiddleware(SecurityServiceImp().authorization)
+      .addHandler(cascadeHandler);
 
       
 
